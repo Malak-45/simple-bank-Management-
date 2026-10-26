@@ -1,0 +1,112 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int choice;
+    int accountNumber = 12345;
+    int pin = 1234;
+    int enteredAccount;
+    int enteredPin;
+
+    double balance = 1000;
+
+    while (true)
+    {
+        cout << "\n===== Simple Bank System =====\n";
+        cout << "1. Login\n";
+        cout << "2. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            cout << "Enter Account Number: ";
+            cin >> enteredAccount;
+
+            cout << "Enter PIN: ";
+            cin >> enteredPin;
+
+            if (enteredAccount == accountNumber && enteredPin == pin)
+            {
+                cout << "\nLogin Successful!\n";
+
+                while (true)
+                {
+                    cout << "\n===== Bank Menu =====\n";
+                    cout << "1. Check Balance\n";
+                    cout << "2. Deposit\n";
+                    cout << "3. Withdraw\n";
+                    cout << "4. Logout\n";
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+
+                    if (choice == 1)
+                    {
+                        cout << "Your Balance = " << balance << endl;
+                    }
+                    else if (choice == 2)
+                    {
+                        double amount;
+
+                        cout << "Enter amount to deposit: ";
+                        cin >> amount;
+
+                        if (amount > 0)
+                        {
+                            balance = balance + amount;
+                            cout << "Deposit Successful!\n";
+                            cout << "Your Balance = " << balance << endl;
+                        }
+                        else
+                        {
+                            cout << "Invalid amount!\n";
+                        }
+                    }
+                    else if (choice == 3)
+                    {
+                        double amount;
+
+                        cout << "Enter amount to withdraw: ";
+                        cin >> amount;
+
+                        if (amount > 0 && amount <= balance)
+                        {
+                            balance = balance - amount;
+                            cout << "Withdrawal Successful!\n";
+                            cout << "Your Balance = " << balance << endl;
+                        }
+                        else
+                        {
+                            cout << "Invalid amount or insufficient balance!\n";
+                        }
+                    }
+                    else if (choice == 4)
+                    {
+                        cout << "Logged out successfully!\n";
+                        break;
+                    }
+                    else
+                    {
+                        cout << "Invalid choice!\n";
+                    }
+                }
+            }
+            else
+            {
+                cout << "Wrong Account Number or PIN!\n";
+            }
+        }
+        else if (choice == 2)
+        {
+            cout << "Thank you for using the Bank System!\n";
+            break;
+        }
+        else
+        {
+            cout << "Invalid choice!\n";
+        }
+    }
+
+    return 0;
+}
